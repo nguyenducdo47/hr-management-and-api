@@ -9,12 +9,11 @@
             <div class="card-body">
                 <h2 class="card-title d-flex justify-content-between align-items-center" style="font-weight: bold;">
                     {{__('messages.user_list') }}
-                    <!-- Nút Thêm User -->
                     <a href="{{ route('admin.users.create') }}" class="btn btn-success btn-sm">{{__('messages.add_user')}}</a>
                 </h2>
                 <form method="GET" action="{{ route('admin.users.index') }}">
                     <div class="form-group">
-                        <input type="text" name="search" class="form-control" placeholder="Search by name"
+                        <input type="text" name="search" class="form-control" placeholder="{{__('messages.search_account_by_name')}}"
                             value="{{ request()->search }}">
                     </div>
                     <div class="form-group">
@@ -37,13 +36,13 @@
                         <tbody>
                             @if ($users->isEmpty())
                                 <tr>
-                                    <td colspan="5" class="text-center">No users found.</td>
+                                    <td colspan="5" class="text-center">{{__('messages.no_user_found')}}</td>
                                 </tr>
                             @else
                                 @foreach ($users as $user)
                                     <tr>
                                         <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
+                                        <td class="text-lowercase">{{ $user->email }}</td>
                                         <td>{{ $user->role->name }}</td>
                                         <td>{{ $user->created_at->format('d-m-Y') }}</td>
                                         <td class="text-center">

@@ -1,49 +1,56 @@
 @extends('admin.dashboard')
 
 @section('content')
-    <div class="p-4 bg-white shadow sm:p-8 dark:bg-gray-800 sm:rounded-lg">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Add User') }}
-        </h2>
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title" style="font-weight: bold;">{{ __('messages.add_user') }}</h2>
+                <form class="forms-sample" action="{{ route('admin.users.store') }}" method="POST">
+                    @csrf
+                    {{-- Name --}}
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+                                id="exampleInputUsername2" placeholder="Username" value="{{ old('name') }}">
+                            @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
 
-        <form action="{{ route('admin.users.store') }}" method="POST">
-            @csrf
+                        </div>
+                    </div>
 
-            <!-- Input Name -->
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                    value="{{ old('name') }}">
-                @error('name')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
+                    {{-- Email --}}
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            {{-- <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email"> --}}
+                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                                id="exampleInputEmail2" placeholder="Email" value="{{ old('email') }}">
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
 
-            <!-- Input Email -->
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                    value="{{ old('email') }}">
-                @error('email')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
+                    {{-- Role --}}
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Role</label>
+                        <div class="col-sm-9">
+                            <select name="role_id" class="form-control @error('role_id') is-invalid @enderror">
+                                <option value="2">Employee</option>
+                                <option value="3">Team Lead</option>
+                                <option value="1">Super Admin</option>
+                            </select>
+                            @error('role_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
 
-            <!-- Input Role -->
-            <div class="form-group">
-                <label for="role_id">Role</label>
-                <select name="role_id" class="form-control @error('role_id') is-invalid @enderror">
-                    <option value="2">Employee</option>
-                    <option value="3">Team Lead</option>
-                    <option value="1">Super Admin</option>
-                </select>
-                @error('role_id')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                    <button type="submit" class="mr-2 btn btn-primary"> {{ __('messages.add') }} </button>
+                </form>
             </div>
-            <div class="mt-4">
-                <button type="submit" class="btn btn-primary">Add User</button>
-            </div>
-        </form>
+        </div>
     </div>
 @endsection

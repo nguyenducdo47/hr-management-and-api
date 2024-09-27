@@ -5,7 +5,7 @@
 </style>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
-        <a class="sidebar-brand brand-logo" href="#"><img src="/assets/images/logo.svg" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo" href="{{url('/admin/dashboard')}}"><img src="/assets/images/logo.svg" alt="logo" /></a>
         <a class="pt-3 pl-4 sidebar-brand brand-logo-mini" href="index.html"><img src="/assets/images/logo-mini.svg"
                 alt="logo" /></a>
     </div>

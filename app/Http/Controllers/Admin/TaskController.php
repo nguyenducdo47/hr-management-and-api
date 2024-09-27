@@ -49,7 +49,7 @@ class TaskController extends Controller
             'status' => false,
         ]);
 
-        return redirect()->route('admin.tasks.index')->with('success', 'Task created successfully!');
+        return redirect()->route('admin.tasks.index')->with('success', __('messages.success_created_task'));
     }
 
     public function edit($id)
@@ -75,13 +75,13 @@ class TaskController extends Controller
             'status' => $request->has('status') ? true : false,
         ]);
 
-        return redirect()->route('admin.tasks.index')->with('success', 'Task updated successfully!');
+        return redirect()->route('admin.tasks.index')->with('success', __('messages.success_updated_task'));
     }
 
     public function destroy($id)
     {
         Task::findOrFail($id)->delete();
-        return redirect()->route('admin.tasks.index')->with('success', 'Task deleted successfully!');
+        return redirect()->route('admin.tasks.index')->with('success', __('messages.success_deleted_task'));
     }
 }
 

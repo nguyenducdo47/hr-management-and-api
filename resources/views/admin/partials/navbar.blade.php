@@ -1,19 +1,19 @@
 <nav class="flex-row navbar col-lg-12 col-12 p-lg-0 fixed-top d-flex">
     <div class="navbar-menu-wrapper d-flex align-items-stretch justify-content-between">
-        <a class="navbar-brand brand-logo-mini align-self-center d-lg-none" href="#"><img
+        <a class="navbar-brand brand-logo-mini align-self-center d-lg-none" href="{{url('/admin/dashboard')}}"><img
                 src="/assets/images/logo-mini.svg" alt="logo" /></a>
         <button class="mr-2 navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <i class="mdi mdi-menu"></i>
         </button>
 
         <ul class="navbar-nav navbar-nav-right ml-lg-auto ">
-            <li class="border-0 nav-item dropdown d-none d-xl-flex">
+            <li class="border-0 nav-item dropdown d-xl-flex">
                 <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown">
                     <i class="mdi mdi-earth"></i>
                     @if (app()->getLocale() == 'en')
-                        {{ __('messages.language_en') }}
+                        {{ __('T. Anh') }}
                     @elseif (app()->getLocale() == 'vi')
-                        {{ __('messages.language_vn') }}
+                        {{ __('T. Việt') }}
                     @else
                         {{ app()->getLocale() }}
                     @endif
@@ -57,11 +57,6 @@
                             <i class="mr-2 mdi mdi-logout text-primary"></i>
                             {{ __('messages.signout') }}
                         </a>
-                        {{-- <x-dropdown-link :href="route('logout')"
-                            onclick="event.preventDefault(); this.closest('form').submit();">
-                            <i class="mr-2 mdi mdi-logout text-primary"></i>
-                            {{ __('messages.signout') }}
-                        </x-dropdown-link> --}}
                     </form>
 
                 </div>

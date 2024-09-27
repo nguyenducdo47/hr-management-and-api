@@ -13,7 +13,7 @@
                 <form action="{{ route('admin.tasks.index') }}" method="GET" class="mb-3">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" name="search" class="form-control" placeholder="Search tasks by name"
+                            <input type="text" name="search" class="form-control" placeholder="{{__('messages.search_task_by_name')}}"
                                 value="{{ request()->search }}">
                             <div class="input-group-append">
                                 <button class="btn btn-sm btn-primary" type="submit"> {{__('messages.search')}} </button>
@@ -64,7 +64,7 @@
                         <tbody>
                             @if ($tasks->isEmpty())
                                 <tr>
-                                    <td colspan="5" class="text-center">No tasks found.</td>
+                                    <td colspan="5" class="text-center">{{__('messages.no_task_found')}}</td>
                                 </tr>
                             @else
                                 @foreach ($tasks as $task)
