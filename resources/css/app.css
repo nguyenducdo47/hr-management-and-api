@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Demo Styles */
+.alert{
+    right: 20px;
+    z-index: 1050;
+}

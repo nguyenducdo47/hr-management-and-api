@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Ensure that the server does not serve .env or other sensitive files
+    RewriteRule ^(\.env|\.htaccess|\.git) - [F,L,NC]
+
+    # Handle requests via Laravel's index.php file
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+
+    # Force HTTPS (Optional, remove if not using HTTPS)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+</IfModule>
